@@ -48,7 +48,7 @@ export const signin = async (req, res, next) => {
             process.env.JWT_SECRET, 
             {expiresIn: '1h'});
         const {pass, ...rest} = validUser._doc;
-            res.status(200).cookie('access_token', token, {
+            res.status(200).cookies('access_token', token, {
                 httpOnly: true,
                 // maxAge: 3600000,
             }).json(rest);
