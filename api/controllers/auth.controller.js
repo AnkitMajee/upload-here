@@ -1,6 +1,6 @@
 import User from "../models/user.model.js";
 import bcryptjs from 'bcryptjs';
-import { errorhandler } from "../utils/error.js";
+import { errorHandler } from "../utils/error.js";
 import jwt from "jsonwebtoken";
 
 export const signup = async (req, res, next) => {  //async is used to make the function asynchronous so that we can use await inside it
@@ -8,7 +8,7 @@ export const signup = async (req, res, next) => {  //async is used to make the f
 
     const {username, email, password} = req.body;
     if(!username || !email || !password || username === ''|| email===''||password===''){
-        next(errorhandler(400,'All fields are required'));
+        next(errorHandler(400,'All fields are required'));
     }
 
     const hashedPassword = await bcryptjs.hash(password, 10); //10 is the salt round
@@ -32,16 +32,16 @@ export const signup = async (req, res, next) => {  //async is used to make the f
 export const signin = async (req, res, next) => {
     const {email, password} = req.body;
     if(!email || !password || email === ''|| password===''){
-        next(errorhandler(404,'All fields are required'));
+        next(errorHandler(404,'All fields are required'));
     }
     try{
         const validUser = await User.findOne({email});
         if(!validUser){
-            return next(errorhandler(404,'User not found'));
+            return next(errorHandler(404,'User not found'));
         }
         const validPassword = bcryptjs.compareSync(password, validUser.password);
         if(!validPassword){
-            return next(errorhandler(400,'Invalid password'));
+            return next(errorHandler(400,'Invalid password'));
         }
         const token = jwt.sign(
             {id: validUser._id}, 
