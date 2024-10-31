@@ -48,13 +48,13 @@ export default function SignIn() {
         {/* left */}
         <div className='flex-1'>
           <Link to='/' className='font-bold dark:text-white text-4xl'>
-            <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>
-              Sahand's
+            <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-green-500 rounded-lg text-white'>
+              Upload
             </span>
-            Blog
+            Here
           </Link>
           <p className='text-sm mt-5'>
-            This is a demo project. You can sign in with your email and password
+           You can sign in with your email and password
             or with Google.
           </p>
         </div>
@@ -81,7 +81,7 @@ export default function SignIn() {
               />
             </div>
             <Button
-              gradientDuoTone='purpleToPink'
+              className='text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium centerrounded-lg text-sm px-3 py-2 text-'
               type='submit'
               disabled={loading}
             >
